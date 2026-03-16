@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font Families */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@layer base {
+  :root {
+    /* Colors - Dark Mode (Default Theme) */
+    --accent: #111111;
+    --accent-foreground: #F2F3F0;
+    --amber-accent: #F59E0B;
+    --background: #111111;
+    --bg-elevated: #1A1A1A;
+    --bg-page: #0A0A0A;
+    --bg-surface: #0F0F0F;
+    --black: #000000;
+    --blue-accent: #3B82F6;
+    --border: #2E2E2E;
+    --border-primary: #2A2A2A;
+    --border-secondary: #252525;
+    --card: #1A1A1A;
+    --card-foreground: #FFFFFF;
+    --color-error: #24100B;
+    --color-error-foreground: #FF5C33;
+    --color-info: #222229;
+    --color-info-foreground: #B2B2FF;
+    --color-success: #222924;
+    --color-success-foreground: #B6FFCE;
+    --color-warning: #291C0F;
+    --color-warning-foreground: #FF8400;
+    --destructive: #FF5C33;
+    --foreground: #FAFAFA;
+    --green-primary: #22C55E;
+    --input: #2E2E2E;
+    --muted: #2E2E2E;
+    --muted-foreground: #B8B9B6;
+    --orange-accent: #F97316;
+    --popover: #1A1A1A;
+    --popover-foreground: #FFFFFF;
+    --primary: #FF8400;
+    --primary-foreground: #111111;
+    --red-accent: #EF4444;
+    --ring: #666666;
+    --secondary: #2E2E2E;
+    --secondary-foreground: #FFFFFF;
+    --sidebar: #18181b;
+    --sidebar-accent: #2a2a30;
+    --sidebar-accent-foreground: #fafafa;
+    --sidebar-border: #ffffff1a;
+    --sidebar-foreground: #fafafa;
+    --sidebar-primary: #18181b;
+    --sidebar-primary-foreground: #fafafa;
+    --sidebar-ring: #71717a;
+    --text-muted: #525252;
+    --text-primary: #FAFAFA;
+    --text-secondary: #6B7280;
+    --text-tertiary: #4B5563;
+    --white: #FFFFFF;
+    --accent-amber: #F59E0B;
+    --accent-cyan: #06B6D4;
+    --accent-green: #10B981;
+    --accent-red: #EF4444;
+    --bg-input: #111111;
+    --border-focus: #10B981;
+    
+    /* Radius */
+    --radius-m: 16px;
+    --radius-none: 0px;
+    --radius-pill: 999px;
+    
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+    
+    /* Syntax Highlighting - Dark Mode */
+    --syn-function: #FFC799;
+    --syn-keyword: #A0A0A0;
+    --syn-number: #FFC799;
+    --syn-operator: #A0A0A0;
+    --syn-property: #A0A0A0;
+    --syn-string: #99FFE4;
+    --syn-type: #FFC799;
+    --syn-variable: #FFFFFF;
+  }
+
+  [data-theme="light"], .light {
+    /* Colors - Light Mode */
+    --accent: #F2F3F0;
+    --accent-foreground: #111111;
+    --background: #F2F3F0;
+    --bg-page: #FFFFFF;
+    --bg-surface: #F8F8F8;
+    --bg-elevated: #FFFFFF;
+    --border: #CBCCC9;
+    --border-primary: #E5E5E5;
+    --card: #FFFFFF;
+    --card-foreground: #111111;
+    --color-error: #E5DCDA;
+    --color-error-foreground: #8C1C00;
+    --color-info: #DFDFE6;
+    --color-info-foreground: #000066;
+    --color-success: #DFE6E1;
+    --color-success-foreground: #004D1A;
+    --color-warning: #E9E3D8;
+    --color-warning-foreground: #804200;
+    --destructive: #D93C15;
+    --foreground: #111111;
+    --input: #CBCCC9;
+    --muted: #F2F3F0;
+    --muted-foreground: #666666;
+    --popover: #FFFFFF;
+    --popover-foreground: #111111;
+    --primary: #FF8400;
+    --primary-foreground: #FFFFFF;
+    --secondary: #E7E8E5;
+    --secondary-foreground: #111111;
+    --text-primary: #111111;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
+    
+    /* Syntax Highlighting - Light Mode */
+    --syn-function: #61AFEF;
+    --syn-keyword: #C678DD;
+    --syn-number: #D19A66;
+    --syn-operator: #ABB2BF;
+    --syn-property: #98C379;
+    --syn-string: #E5C07B;
+    --syn-type: #E5C07B;
+    --syn-variable: #E06C75;
+  }
+  
+  * {
+    border-color: var(--border);
+  }
+  
+  body {
+    background-color: var(--bg-page);
+    color: var(--foreground);
+  }
+}
