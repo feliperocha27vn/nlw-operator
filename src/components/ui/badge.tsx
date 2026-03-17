@@ -10,20 +10,20 @@ const badgeVariants = tv({
   variants: {
     variant: {
       critical: {
-        dot: "bg-(--accent-red)",
-        text: "text-(--accent-red)",
+        dot: "bg-accent-red",
+        text: "text-accent-red",
       },
       warning: {
-        dot: "bg-(--accent-amber)",
-        text: "text-(--accent-amber)",
+        dot: "bg-accent-amber",
+        text: "text-accent-amber",
       },
       good: {
-        dot: "bg-(--accent-green)",
-        text: "text-(--accent-green)",
+        dot: "bg-accent-green",
+        text: "text-accent-green",
       },
       verdict: {
-        dot: "bg-(--accent-red)",
-        text: "text-(--accent-red) text-[13px]",
+        dot: "bg-accent-red",
+        text: "text-accent-red text-[13px]",
       },
     },
   },

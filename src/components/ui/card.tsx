@@ -3,10 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants"
 
 const cardVariants = tv({
   slots: {
-    root: "flex flex-col gap-3 p-5 border border-(--border-primary) rounded-lg",
+    root: "flex flex-col gap-3 p-5 border border-border-primary rounded-lg",
     header: "flex items-center gap-2",
-    title: "font-mono text-[13px] font-normal text-(--text-primary)",
-    description: "font-sans text-xs leading-relaxed text-(--text-secondary)",
+    title: "font-mono text-[13px] font-normal text-text-primary",
+    description: "font-sans text-xs leading-relaxed text-text-secondary",
   },
 })
 

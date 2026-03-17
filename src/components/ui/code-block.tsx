@@ -5,47 +5,85 @@ import { tv, type VariantProps } from "tailwind-variants"
 
 const codeBlockVariants = tv({
   slots: {
-    root: "flex flex-col bg-(--bg-input) border border-(--border-primary) rounded-lg overflow-hidden w-full",
+    root: "flex flex-col bg-bg-input border border-border-primary rounded-lg overflow-hidden w-full",
     header:
-      "flex items-center h-10 px-4 border-b border-(--border-primary) font-mono text-xs text-(--text-tertiary)",
+      "flex items-center h-10 px-4 border-b border-border-primary font-mono text-xs text-text-tertiary",
     body: "p-4 overflow-x-auto",
     pre: "!bg-transparent !p-0 !m-0",
     code: "font-mono text-[13px]",
   },
 })
 
+// ---------------------------------------------------------------------------
+// CodeBlock — root container
+// ---------------------------------------------------------------------------
+
 export interface CodeBlockProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof codeBlockVariants> {}
+
+const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
+  ({ className, children, ...props }, ref) => {
+    const styles = codeBlockVariants()
+    return (
+      <div ref={ref} className={styles.root({ className })} {...props}>
+        {children}
+      </div>
+    )
+  }
+)
+CodeBlock.displayName = "CodeBlock"
+
+// ---------------------------------------------------------------------------
+// CodeBlockHeader — lang + line count bar
+// ---------------------------------------------------------------------------
+
+export interface CodeBlockHeaderProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof codeBlockVariants> {
+  lang: BundledLanguage
+  lineCount: number
+}
+
+const CodeBlockHeader = React.forwardRef<HTMLDivElement, CodeBlockHeaderProps>(
+  ({ lang, lineCount, className, ...props }, ref) => {
+    const styles = codeBlockVariants()
+    return (
+      <div ref={ref} className={styles.header({ className })} {...props}>
+        lang: {lang} · {lineCount} {lineCount === 1 ? "line" : "lines"}
+      </div>
+    )
+  }
+)
+CodeBlockHeader.displayName = "CodeBlockHeader"
+
+// ---------------------------------------------------------------------------
+// CodeBlockBody — syntax-highlighted code (async Server Component)
+// ---------------------------------------------------------------------------
+
+export interface CodeBlockBodyProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof codeBlockVariants> {
   code: string
   lang: BundledLanguage
   theme?: BundledTheme
-  showHeader?: boolean
-  showLineNumbers?: boolean
 }
 
-async function CodeBlock({
+async function CodeBlockBody({
   code,
   lang,
   theme = "vesper",
-  showHeader = true,
-  showLineNumbers = false,
   className,
   ...props
-}: CodeBlockProps) {
+}: CodeBlockBodyProps) {
   const styles = codeBlockVariants()
 
-  // Calculate line count
-  const lineCount = code.trim().split("\n").length
-
-  // Generate highlighted HTML
   const html = await codeToHtml(code, {
     lang,
     theme,
     transformers: [
       {
         pre(node) {
-          // Remove default padding and margin from pre element
           node.properties.class = styles.pre()
         },
         code(node) {
@@ -56,19 +94,13 @@ async function CodeBlock({
   })
 
   return (
-    <div className={styles.root({ className })} {...props}>
-      {showHeader && (
-        <div className={styles.header()}>
-          lang: {lang} · {lineCount} {lineCount === 1 ? "line" : "lines"}
-        </div>
-      )}
-      <div
-        className={styles.body()}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-    </div>
+    <div
+      className={styles.body({ className })}
+      dangerouslySetInnerHTML={{ __html: html }}
+      {...props}
+    />
   )
 }
-CodeBlock.displayName = "CodeBlock"
+CodeBlockBody.displayName = "CodeBlockBody"
 
-export { CodeBlock, codeBlockVariants }
+export { CodeBlock, CodeBlockHeader, CodeBlockBody, codeBlockVariants }

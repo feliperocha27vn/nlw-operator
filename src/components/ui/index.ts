@@ -18,8 +18,17 @@ export type {
   CardDescriptionProps,
 } from "./card"
 
-export { CodeBlock, codeBlockVariants } from "./code-block"
-export type { CodeBlockProps } from "./code-block"
+export {
+  CodeBlock,
+  CodeBlockHeader,
+  CodeBlockBody,
+  codeBlockVariants,
+} from "./code-block"
+export type {
+  CodeBlockProps,
+  CodeBlockHeaderProps,
+  CodeBlockBodyProps,
+} from "./code-block"
 
 export { DiffLine, diffLineVariants } from "./diff-line"
 export type { DiffLineProps } from "./diff-line"
@@ -27,5 +36,5 @@ export type { DiffLineProps } from "./diff-line"
 export { SectionTitle, sectionTitleVariants } from "./section-title"
 export type { SectionTitleProps } from "./section-title"
 
-export { Toggle, toggleVariants } from "./toggle"
-export type { ToggleProps } from "./toggle"
+export { Toggle, ToggleLabel, toggleVariants } from "./toggle"
+export type { ToggleProps, ToggleLabelProps } from "./toggle"

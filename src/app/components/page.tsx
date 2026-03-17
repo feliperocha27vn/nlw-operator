@@ -6,9 +6,12 @@ import {
   CardHeader,
   CardTitle,
   CodeBlock,
+  CodeBlockBody,
+  CodeBlockHeader,
   DiffLine,
   SectionTitle,
   Toggle,
+  ToggleLabel,
 } from "@/components/ui"
 
 export default async function ComponentsPage() {
@@ -85,8 +88,12 @@ export default async function ComponentsPage() {
         <section className="space-y-6">
           <SectionTitle>toggle</SectionTitle>
           <div className="flex flex-wrap items-center gap-8">
-            <Toggle label="roast mode" checked={true} />
-            <Toggle label="roast mode" checked={false} />
+            <Toggle checked={true}>
+              <ToggleLabel>roast mode</ToggleLabel>
+            </Toggle>
+            <Toggle checked={false}>
+              <ToggleLabel>roast mode</ToggleLabel>
+            </Toggle>
           </div>
         </section>
 
@@ -109,19 +116,24 @@ export default async function ComponentsPage() {
         {/* CodeBlock */}
         <section className="space-y-6">
           <SectionTitle>code_block</SectionTitle>
-          <div className="max-w-[560px]">
-            <CodeBlock
-              code={`function calculateTotal() {\n  var items = [10, 20, 30];\n  return items.reduce((a, b) => a + b);\n}`}
-              lang="javascript"
-              showHeader={true}
-            />
+          <div className="max-w-140">
+            <CodeBlock>
+              <CodeBlockHeader
+                lang="javascript"
+                lineCount={4}
+              />
+              <CodeBlockBody
+                code={`function calculateTotal() {\n  var items = [10, 20, 30];\n  return items.reduce((a, b) => a + b);\n}`}
+                lang="javascript"
+              />
+            </CodeBlock>
           </div>
         </section>
 
         {/* DiffLine */}
         <section className="space-y-6">
           <SectionTitle>diff_line</SectionTitle>
-          <div className="max-w-[560px] flex flex-col">
+          <div className="max-w-140 flex flex-col">
             <DiffLine type="removed">var total = 0;</DiffLine>
             <DiffLine type="added">const total = 0;</DiffLine>
             <DiffLine type="context">return total;</DiffLine>

@@ -4,8 +4,8 @@ import { tv, type VariantProps } from "tailwind-variants"
 const sectionTitleVariants = tv({
   slots: {
     root: "inline-flex items-center gap-2",
-    slash: "font-mono text-sm font-bold text-(--accent-green)",
-    text: "font-mono text-sm font-bold text-(--text-primary)",
+    slash: "font-mono text-sm font-bold text-accent-green",
+    text: "font-mono text-sm font-bold text-text-primary",
   },
 })
 
